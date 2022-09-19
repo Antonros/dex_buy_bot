@@ -2,14 +2,15 @@ import os
 import time
 from random import randint
 
-import schedule
 import telegram
 from dotenv import load_dotenv
+from schedule import every, repeat, run_pending
 from web3 import Web3
 
 from data import bnb_token_address, panabi, panRouterContractAddress
 
 
+@repeat(every(20).to(80).seconds)
 def job():
 
     buy_token = '0xe9e7cea3dedca5984780bafc599bd69add087d56'
@@ -82,6 +83,7 @@ def job():
         raise Exception(f'Сообщение не отправлено, "{error}".')
 
 
-schedule.every(15).seconds.do(job)
 
-#job()
+while True:
+    run_pending()
+    time.sleep(1)
