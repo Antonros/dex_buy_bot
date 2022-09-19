@@ -82,6 +82,6 @@ def job():
         raise Exception(f'Сообщение не отправлено, "{error}".')
 
 
-# schedule.every(15).seconds.do(job)
+schedule.every(15).seconds.do(job)
 
-job()
+#job()
