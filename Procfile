@@ -1,1 +1,1 @@
-worker: python token_by.py
+worker: python token_buy.py
